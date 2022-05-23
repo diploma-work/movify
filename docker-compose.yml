@@ -1,0 +1,25 @@
+version: "3.8"
+
+volumes:
+  pg_volume:
+
+services:
+  db:
+    image: postgres:13-alpine
+    container_name: postgres-ctn
+    volumes:
+      - pg_volume:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    env_file:
+      - .env
+#  main_app:
+#    build: .
+#    depends_on:
+#      - db
+#    restart: always
+#    container_name: main-app-ctn
+#    ports:
+#      - "8080:8080"
+#    env_file:
+#      - .env
